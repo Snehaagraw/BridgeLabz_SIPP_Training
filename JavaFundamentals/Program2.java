@@ -39,6 +39,16 @@ class Program2{
 		Q17(d,e,f);
 		Q18(a,b,c);
 		Q19(number1,number2);
+		Q20();
+		Q21();
+		Q22();
+		Q23();
+		Q24();
+		Q25();
+		Q26();
+		Q27();
+		Q28();
+
 	}
 
 	//Write a Program to compute the volume of Earth in km^3 and miles^3

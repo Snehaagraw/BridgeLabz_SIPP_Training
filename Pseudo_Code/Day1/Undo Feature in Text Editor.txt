@@ -1,0 +1,15 @@
+1 Undo Feature in Text Editor
+
+
+class TextEditor
+   attribute: stack of operations
+   methods type(text)
+      push text into stack
+      print "typed: text"
+ 
+   method undo()
+	if stack is not empty
+	   lastOperation = pop from stack
+	   print "last operation removed"
+	else
+	   print "noting to undo"

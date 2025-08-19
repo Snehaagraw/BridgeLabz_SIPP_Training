@@ -1,0 +1,27 @@
+1 Traffic Signal Simulation
+
+ENUM TrafficLight
+    RED, YELLOW, GREEN
+
+CLASS TrafficSignal
+    ATTRIBUTE: currentLight
+
+    CONSTRUCTOR()
+        set currentLight = RED
+
+    METHOD changeLight()
+        IF currentLight == RED
+            set currentLight = GREEN
+        ELSE IF currentLight == GREEN
+            set currentLight = YELLOW
+        ELSE IF currentLight == YELLOW
+            set currentLight = RED
+
+    METHOD displayLight()
+        PRINT "Current Light: " + currentLight
+
+MAIN
+    CREATE signal = new TrafficSignal
+    LOOP 5 times
+        signal.displayLight()
+        signal.changeLight()

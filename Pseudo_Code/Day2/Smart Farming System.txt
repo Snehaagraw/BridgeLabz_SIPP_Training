@@ -1,0 +1,33 @@
+2 Smart Farming System
+
+ABSTRACT CLASS Crop
+    ATTRIBUTE: name
+    CONSTRUCTOR(name)
+        set crop name
+    ABSTRACT METHOD waterRequirement()
+    ABSTRACT METHOD harvest()
+
+CLASS Rice EXTENDS Crop
+    CONSTRUCTOR()
+        set name = "Rice"
+    IMPLEMENT waterRequirement()
+        PRINT "Rice needs high water supply"
+    IMPLEMENT harvest()
+        PRINT "Rice harvested in 120 days"
+
+CLASS Wheat EXTENDS Crop
+    CONSTRUCTOR()
+        set name = "Wheat"
+    IMPLEMENT waterRequirement()
+        PRINT "Wheat needs moderate water supply"
+    IMPLEMENT harvest()
+        PRINT "Wheat harvested in 90 days"
+
+MAIN
+    CREATE rice = new Rice
+    rice.waterRequirement()
+    rice.harvest()
+
+    CREATE wheat = new Wheat
+    wheat.waterRequirement()
+    wheat.harvest()

@@ -1,0 +1,26 @@
+2 Hospital Department Mapper
+
+CLASS Doctor
+    ATTRIBUTES: name, specialization
+    CONSTRUCTOR(name, specialization)
+
+BEGIN
+    CREATE hospitalDepartments as Map<String, List<Doctor>>
+
+    ADD "Cardiology" → [Doctor("Amit","Cardiologist"), Doctor("Riya","Cardiologist")]
+    ADD "Neurology" → [Doctor("Karan","Neurologist")]
+    ADD "Orthopedics" → [Doctor("Meena","Orthopedic")]
+
+    FUNCTION filterDoctorsBySpecialization(map, specialization)
+        result = empty list
+        FOR each department in map
+            FOR each doctor in department's list
+                IF doctor.specialization == specialization
+                    ADD doctor to result
+        RETURN result
+
+    matchedDoctors = filterDoctorsBySpecialization(hospitalDepartments, "Cardiologist")
+    PRINT "Doctors with specialization Cardiologist:"
+    FOR each doctor in matchedDoctors
+        PRINT doctor.name
+END

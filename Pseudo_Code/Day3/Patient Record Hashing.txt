@@ -1,0 +1,26 @@
+1.Patient Record Hashing
+
+Class Patient
+    Attributes: id, name, age, disease
+
+Main
+    Create HashMap<id, Patient> patientMap
+
+    // Add patients
+    p1 = new Patient(101, "Alice", 30, "Flu")
+    p2 = new Patient(102, "Bob", 45, "Diabetes")
+    patientMap.put(p1.id, p1)
+    patientMap.put(p2.id, p2)
+
+    // Retrieve patient
+    Print patientMap.get(101).name   // Output: Alice
+
+    // Update record
+    patientMap.get(102).disease = "Hypertension"
+
+    // Delete record
+    patientMap.remove(101)
+
+    // Iterate all
+    For each entry in patientMap
+        Print entry.key + " → " + entry.value.name

@@ -1,0 +1,34 @@
+2.Maze Solver Bot
+
+Function solveMaze(maze, x, y, solution)
+    If (x,y) is outside maze OR is wall → return false
+    If (x,y) is destination → mark solution[x][y] = 1, return true
+
+    If solution[x][y] already visited → return false
+
+    Mark solution[x][y] = 1
+
+    // Move Down
+    If solveMaze(maze, x+1, y, solution) → return true
+
+    // Move Right
+    If solveMaze(maze, x, y+1, solution) → return true
+
+    // Move Up
+    If solveMaze(maze, x-1, y, solution) → return true
+
+    // Move Left
+    If solveMaze(maze, x, y-1, solution) → return true
+
+    // Backtrack
+    Mark solution[x][y] = 0
+    return false
+
+Main
+    Define maze as 2D grid (1 = path, 0 = wall)
+    Create solution matrix same size as maze
+    If solveMaze(maze, startX, startY, solution) 
+        Print "Path found"
+        Print solution matrix
+    Else
+        Print "No path exists"

@@ -1,0 +1,55 @@
+2.Autocomplete Search Suggestions
+
+Class TrieNode
+    Attributes:
+        Map<char, TrieNode> children
+        Boolean isEndOfWord
+        Integer popularity
+        String word
+
+Class Trie
+    Attribute: root = new TrieNode()
+
+    Method insert(keyword, popularity)
+        node = root
+        For each char c in keyword
+            If c not in node.children
+                node.children[c] = new TrieNode()
+            node = node.children[c]
+        node.isEndOfWord = true
+        node.word = keyword
+        node.popularity = popularity
+
+    Method searchPrefix(prefix)
+        node = root
+        For each char c in prefix
+            If c not in node.children → return []
+            node = node.children[c]
+        Return collectAllWords(node)
+
+    Method collectAllWords(node)
+        results = []
+        If node.isEndOfWord → results.add((node.word, node.popularity))
+        For each child in node.children
+            results += collectAllWords(child)
+        Return results
+
+    Method getSuggestions(prefix, N)
+        words = searchPrefix(prefix)
+        Sort words by popularity (descending)
+        Return top N words
+
+Main
+    trie = new Trie()
+    trie.insert("pizza hut", 100)
+    trie.insert("pizza point", 80)
+    trie.insert("pita bread", 50)
+    trie.insert("pizzeria", 70)
+
+    Input: "pi"
+    Suggestions = trie.getSuggestions("pi", 3)
+    Print Suggestions   // ["pizza hut", "pizza point", "pita bread"]
+
+    trie.insert("pineapple cafe", 60)
+    NewSuggestions = trie.getSuggestions("pi", 3)
+    Print NewSuggestions   // ["pizza hut", "pizza point", "pineapple cafe"] (depends on popularity)

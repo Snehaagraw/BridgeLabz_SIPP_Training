@@ -1,0 +1,43 @@
+1.Distributed Load Balancer
+
+Class LoadBalancer
+    Attribute: Queue servers
+
+    Method addServer(serverName)
+        servers.enqueue(serverName)
+
+    Method removeServer(serverName)
+        tempQueue = empty Queue
+        While servers not empty
+            s = servers.dequeue()
+            If s != serverName
+                tempQueue.enqueue(s)
+        servers = tempQueue
+
+    Method getNextServer()
+        server = servers.dequeue()
+        servers.enqueue(server)   // round-robin rotation
+        return server
+
+    Method processRequests(requests)
+        For each request in requests
+            assignedServer = getNextServer()
+            Print request + " → " + assignedServer
+
+Main
+    lb = new LoadBalancer()
+    lb.addServer("S1")
+    lb.addServer("S2")
+    lb.addServer("S3")
+
+    requests = ["R1", "R2", "R3"]
+    lb.processRequests(requests) 
+    // Output: R1→S1, R2→S2, R3→S3
+
+    lb.addServer("S4")
+    lb.processRequests(["R4", "R5"]) 
+    // Output: R4→S1, R5→S2
+
+    lb.removeServer("S2")
+    lb.processRequests(["R6", "R7", "R8"]) 
+    // Output: R6→S3, R7→S4, R8→S1

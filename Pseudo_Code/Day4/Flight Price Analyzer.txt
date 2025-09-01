@@ -1,0 +1,37 @@
+1.Flight Price Analyzer
+
+Class Flight
+    Attributes: flightNo, price, duration
+
+Comparator PriceComparator
+    Compare two flights by price
+
+Comparator DurationComparator
+    Compare two flights by duration
+
+Function mergeSort(flights, comparator)
+    If flights.size <= 1 → return flights
+    mid = size/2
+    left = mergeSort(first half, comparator)
+    right = mergeSort(second half, comparator)
+    return merge(left, right, comparator)
+
+Function merge(left, right, comparator)
+    result = []
+    i = j = 0
+    While i < left.size AND j < right.size
+        If comparator.compare(left[i], right[j]) <= 0
+            result.add(left[i])
+            i++
+        Else
+            result.add(right[j])
+            j++
+    Add remaining elements
+    return result
+
+Main
+    flights = [ (F1, 5000, 3h), (F2, 4500, 2h), (F3, 6000, 2.5h) ]
+    sortedByPrice = mergeSort(flights, PriceComparator)
+    Print sortedByPrice
+    sortedByDuration = mergeSort(flights, DurationComparator)
+    Print sortedByDuration

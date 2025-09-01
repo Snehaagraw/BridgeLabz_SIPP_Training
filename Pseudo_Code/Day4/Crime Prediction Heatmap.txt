@@ -1,0 +1,31 @@
+2.Crime Prediction Heatmap
+
+Class Zone
+    Attributes: id, crimeRate
+    List<Zone> neighbors
+
+Function DFS(zone, visited, threshold)
+    Mark zone as visited
+    If zone.crimeRate > threshold
+        Print "High Risk Zone: " + zone.id
+    For each neighbor in zone.neighbors
+        If not visited[neighbor]
+            DFS(neighbor, visited, threshold)
+
+Main
+    // Build graph of city zones
+    zone1 = Zone(1, 70)
+    zone2 = Zone(2, 40)
+    zone3 = Zone(3, 90)
+    zone4 = Zone(4, 30)
+
+    Connect zone1 ↔ zone2
+    Connect zone2 ↔ zone3
+    Connect zone3 ↔ zone4
+
+    visited = empty map
+    threshold = 60
+
+    For each zone in city
+        If not visited[zone]
+            DFS(zone, visited, threshold)

@@ -1,0 +1,26 @@
+2.Digital Wallet Transactions Report
+
+Class Transaction
+    Attributes: id, amount, merchant, date
+
+Main
+    transactions = [
+        Transaction(1, 500, "Amazon", "2025-08-01"),
+        Transaction(2, 200, "Flipkart", "2025-08-03"),
+        Transaction(3, 1000, "Amazon", "2025-09-05"),
+        Transaction(4, 150, "Flipkart", "2025-09-10")
+    ]
+
+    // Group by merchant and month
+    report = transactions.stream()
+                         .collect(groupingBy(
+                             t -> t.merchant,
+                             groupingBy(t -> month(t.date),
+                                        summing(t.amount))
+                         ))
+
+    // Display report
+    For each merchant in report
+        Print "Merchant: " + merchant
+        For each month in report[merchant]
+            Print month + " → Total: " + report[merchant][month]

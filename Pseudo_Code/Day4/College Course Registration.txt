@@ -1,0 +1,28 @@
+1.College Course Registration
+
+Class Student
+    Attributes: id, name
+
+Class Course
+    Attributes: code, title
+
+Main
+    courseMap = new Map<Course, List<Student>>()
+
+    // Add students to courses
+    s1 = new Student(1, "Alice")
+    s2 = new Student(2, "Bob")
+    s3 = new Student(3, "Charlie")
+
+    c1 = new Course("CS101", "Data Structures")
+    c2 = new Course("MA101", "Calculus")
+
+    // Add students to course list
+    courseMap[c1] = [s1, s2]
+    courseMap[c2] = [s2, s3]
+
+    // Display students per course
+    For each course in courseMap
+        Print course.title + " : "
+        For each student in courseMap[course]
+            Print student.name

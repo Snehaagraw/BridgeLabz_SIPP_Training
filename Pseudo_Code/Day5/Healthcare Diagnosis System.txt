@@ -1,0 +1,51 @@
+1.Healthcare Diagnosis System
+
+Interface DiagnosisStrategy
+    Method diagnose(symptoms: List<String>) → List<String>
+
+Class RuleBasedDiagnosis implements DiagnosisStrategy
+    Method diagnose(symptoms)
+        If symptoms contain ["fever", "cough", "fatigue"]
+            Return ["Flu", "COVID-19"]
+        Else
+            Return ["Unknown"]
+
+Class AIBasedDiagnosis implements DiagnosisStrategy
+    Method diagnose(symptoms)
+        If symptoms contain ["headache", "dizziness", "nausea"]
+            Return ["Migraine", "Vertigo"]
+        Else
+            Return ["Unknown"]
+
+Class ProbabilityBasedDiagnosis implements DiagnosisStrategy
+    Method diagnose(symptoms)
+        Apply probability model
+        Return ["Likely Disease A", "Possible Disease B"]
+
+// New Algorithm can be added easily
+Class GeneticPatternDiagnosis implements DiagnosisStrategy
+    Method diagnose(symptoms)
+        Analyze DNA markers
+        Return ["Genetic Disorder X", "Genetic Disorder Y"]
+
+Class DiagnosisContext
+    Attribute strategy: DiagnosisStrategy
+    Method setStrategy(DiagnosisStrategy s)
+        strategy = s
+    Method executeDiagnosis(symptoms)
+        Return strategy.diagnose(symptoms)
+
+Main
+    patient1Symptoms = ["fever", "cough", "fatigue"]
+    context = new DiagnosisContext()
+    context.setStrategy(new RuleBasedDiagnosis())
+    Print context.executeDiagnosis(patient1Symptoms)
+
+    patient2Symptoms = ["headache", "dizziness", "nausea"]
+    context.setStrategy(new AIBasedDiagnosis())
+    Print context.executeDiagnosis(patient2Symptoms)
+
+    // Tomorrow: add new algorithm without touching old code
+    patient3Symptoms = ["gene mutation X", "family history Y"]
+    context.setStrategy(new GeneticPatternDiagnosis())
+    Print context.executeDiagnosis(patient3Symptoms)

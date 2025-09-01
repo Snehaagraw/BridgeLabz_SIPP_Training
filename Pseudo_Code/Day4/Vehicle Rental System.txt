@@ -1,0 +1,38 @@
+2.Vehicle Rental System
+
+Interface Rentable
+    Method rent()
+    Method returnVehicle()
+
+Abstract Class Vehicle implements Rentable
+    Attributes: vehicleNumber, brand
+    Abstract Method rent()
+    Abstract Method returnVehicle()
+
+Class Car extends Vehicle
+    Method rent() → Print "Car rented"
+    Method returnVehicle() → Print "Car returned"
+
+Class Bike extends Vehicle
+    Method rent() → Print "Bike rented"
+    Method returnVehicle() → Print "Bike returned"
+
+Class Truck extends Vehicle
+    Method rent() → Print "Truck rented"
+    Method returnVehicle() → Print "Truck returned"
+
+Class VehicleFactory
+    Method getVehicle(type)
+        If type == "car" → return new Car()
+        If type == "bike" → return new Bike()
+        If type == "truck" → return new Truck()
+
+Main
+    VehicleFactory factory = new VehicleFactory()
+    Vehicle v1 = factory.getVehicle("car")
+    v1.rent()
+    v1.returnVehicle()
+
+    Vehicle v2 = factory.getVehicle("bike")
+    v2.rent()
+    v2.returnVehicle()

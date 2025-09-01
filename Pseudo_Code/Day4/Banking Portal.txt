@@ -1,0 +1,33 @@
+1.Banking Portal
+
+Class Account
+    Attributes: accountNumber, balance
+    Method deposit(amount)
+        balance = balance + amount
+    Method withdraw(amount)
+        Print "Generic withdrawal"
+
+Class Saving extends Account
+    Method withdraw(amount)
+        If balance - amount >= 500   // minimum balance rule
+            balance = balance - amount
+            Print "Withdrawal successful"
+        Else
+            Print "Insufficient balance"
+
+Class Current extends Account
+    Method withdraw(amount)
+        If balance - amount >= 0     // overdraft not allowed
+            balance = balance - amount
+            Print "Withdrawal successful"
+        Else
+            Print "Insufficient balance"
+
+Main
+    Create Saving s
+    s.deposit(1000)
+    s.withdraw(600)
+
+    Create Current c
+    c.deposit(2000)
+    c.withdraw(2500)

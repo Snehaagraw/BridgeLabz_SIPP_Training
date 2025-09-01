@@ -1,0 +1,23 @@
+1.Food Delivery System
+
+Class Customer
+    Attributes: name, address, phone
+
+Class Restaurant
+    Attributes: name, location, menu
+
+Class DeliveryBoy
+    Attributes: name, id, phone
+
+Class Order
+    Attributes: orderId, items
+    Has-A: Customer
+    Has-A: Restaurant
+    Has-A: DeliveryBoy
+
+Main
+    Create Customer c
+    Create Restaurant r
+    Create DeliveryBoy d
+    Create Order o with c, r, d
+    Print: "Order placed by c.name from r.name delivered by d.name"

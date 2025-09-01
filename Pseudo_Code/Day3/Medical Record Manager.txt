@@ -1,0 +1,26 @@
+2. Medical Record Manager
+
+Interface Searchable
+    Method: search(keyword)
+
+Interface Printable
+    Method: print()
+
+Class LabReport implements Searchable, Printable
+    Method search(keyword): search in lab results
+    Method print(): print lab report
+
+Class Prescription implements Searchable, Printable
+    Method search(keyword): search in medicine list
+    Method print(): print prescription
+
+Class MedicalRecordManager
+    Method manageReport(report: Searchable, Printable)
+        report.search("test")
+        report.print()
+
+Main
+    Create LabReport lr
+    Create Prescription pr
+    Call manageReport(lr)
+    Call manageReport(pr)

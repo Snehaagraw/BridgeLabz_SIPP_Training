@@ -1,0 +1,26 @@
+2.Employee Bonus Distribution Engine
+
+Class Employee
+    Attributes: name, department, rating, salary
+
+Main
+    employees = List<Employee>  // 1000 employees
+
+    // Step 1: Group by department
+    Map<Department, List<Employee>> deptMap = employees.stream()
+        .collect(groupingBy(emp -> emp.department))
+
+    // Step 2: For each department, calculate total bonus pool (10% of salaries)
+    For each dept in deptMap
+        totalSalary = deptMap[dept].stream()
+                         .mapToDouble(emp -> emp.salary).sum()
+        bonusPool = totalSalary * 0.1
+
+        // Step 3: Sum of ratings
+        totalRating = deptMap[dept].stream()
+                          .mapToInt(emp -> emp.rating).sum()
+
+        // Step 4: Distribute bonus proportionally
+        For each emp in deptMap[dept]
+            empBonus = (emp.rating / totalRating) * bonusPool
+            Print emp.name + " → Bonus: " + empBonus

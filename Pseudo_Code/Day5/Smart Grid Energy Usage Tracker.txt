@@ -1,0 +1,26 @@
+1. Smart Grid Energy Usage Tracker
+
+Class Reading
+    Attributes: meterId, consumption
+
+Class Zone
+    Attributes: name
+
+Class Day
+    Attributes: date
+
+Main
+    // Nested Map: Zone → Day → List<Reading>
+    Map<Zone, Map<Day, List<Reading>>> energyData
+
+    // Example data
+    energyData[Zone-A][2025-08-01] = [120, 90, 200, 150]
+    energyData[Zone-B][2025-08-01] = [300, 350, 250]
+
+    // Calculate peak usage
+    For each zone in energyData
+        Print "Zone: " + zone.name
+        For each day in energyData[zone]
+            readings = energyData[zone][day]
+            peak = readings.stream().max()
+            Print day.date + " → Peak Load: " + peak

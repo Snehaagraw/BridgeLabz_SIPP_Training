@@ -1,0 +1,24 @@
+2.Payment Processor
+
+Class Transaction<T>
+    Attributes: transactionId, amount, T paymentMethod
+    Method process()
+        Print "Processing " + paymentMethod + " transaction of " + amount
+
+Class UPI
+    Attributes: upiId
+
+Class Card
+    Attributes: cardNumber, expiry
+
+Class NetBanking
+    Attributes: bankName, accountNumber
+
+Main
+    upiTransaction = new Transaction<UPI>(101, 500, new UPI("alice@upi"))
+    cardTransaction = new Transaction<Card>(102, 1000, new Card("1234", "12/25"))
+    netBankingTransaction = new Transaction<NetBanking>(103, 2000, new NetBanking("HDFC", "ACC123"))
+
+    upiTransaction.process()
+    cardTransaction.process()
+    netBankingTransaction.process()

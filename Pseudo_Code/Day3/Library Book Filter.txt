@@ -1,0 +1,20 @@
+1.Library Book Filter
+
+Class Book
+    Attributes: title, author, yearPublished, rating
+
+Main
+    books = [
+        Book("Book1", "Author1", 2018, 4.6),
+        Book("Book2", "Author2", 2014, 4.8),
+        Book("Book3", "Author3", 2019, 4.4),
+        Book("Book4", "Author4", 2020, 4.9)
+    ]
+
+    filteredBooks = books.stream()
+                         .filter(book -> book.yearPublished > 2015)
+                         .filter(book -> book.rating > 4.5)
+                         .collect(toList())
+
+    Print filteredBooks
+    // Output: Book1, Book4
